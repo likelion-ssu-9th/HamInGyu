@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from firstapp import views as first #view.firstapp.~~ 이렇게 들어갈 거를 first.~~ 이렇게 편하게
 from wordcount import views as wc
+from assignmentBlog import views as blog
 
 #'' -> 최초의 페이지
 #두번째 인자 -> 연결할 view
@@ -24,11 +25,15 @@ from wordcount import views as wc
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('', first.welcome, name="welcome"),
     path('hello/', first.hello, name="hello"),
 
     path('wc/', wc.home, name="wc"),
     path('wc/result/', wc.result, name="result"),
+
+    path('blog/', blog.home, name="home"),
+    path('blog/<str:id>', blog.detail, name="detail")
 
 
 ]
